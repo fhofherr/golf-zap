@@ -1,0 +1,14 @@
+---
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.12
+        environment:
+          GO111MODULE: "on"
+    working_directory: /go/src/github.com/fhofherr/golf-zap
+    steps:
+      - checkout
+      - run: go get github.com/mattn/goveralls
+      - run: make test
+      - run: /go/bin/goveralls -coverprofile=coverage.out -service=circle-ci -repotoken=$COVERALLS_REPO_TOKEN
