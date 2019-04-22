@@ -1,7 +1,7 @@
 # golf-zap
 
 `golf-zap` contains the
-[`golf`]((https://godoc.org/github.com/fhofherr/golf)) adapter for the
+[`golf`](https://godoc.org/github.com/fhofherr/golf) adapter for the
 [zap](https://godoc.org/go.uber.org/zap) logger.
 
 [![GoDoc](https://godoc.org/github.com/fhofherr/golf-zap?status.svg)](https://godoc.org/github.com/fhofherr/golf-zap)
