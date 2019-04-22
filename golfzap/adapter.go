@@ -112,3 +112,18 @@ func toString(x interface{}, d string) string {
 	}
 	return d
 }
+
+// With adds the values in kvs to the zap adapter.
+//
+// With delegates to the wrapped zap logger's With method. It therefore depends
+// on how zap handles key value pairs passed to With. Especially this means
+// that passing "level" to with defines the log level for this logger. It is not
+// possible to override a "level" key passed to With by passing a different level
+// to Log.
+func (l zapAdapter) With(kvs ...interface{}) log.Logger {
+	logger := l.logger.Sugar()
+	logger = logger.With(kvs...)
+	return zapAdapter{
+		logger: logger.Desugar(),
+	}
+}

@@ -117,6 +117,41 @@ func TestLog(t *testing.T) {
 	}
 }
 
+func TestWith(t *testing.T) {
+	tests := []struct {
+		name     string
+		withKVs  []interface{}
+		kvs      []interface{}
+		expected string
+	}{
+		{
+			name:     "some kvs and message",
+			withKVs:  []interface{}{"key1", "value1"},
+			kvs:      []interface{}{"message", "some message"},
+			expected: `{"level": "info", "key1": "value1", "msg": "some message"}`,
+		},
+		{
+			name:     "later level does not override prior level",
+			withKVs:  []interface{}{"level", "debug"},
+			kvs:      []interface{}{"level", "error"},
+			expected: `{"level": "debug", "msg": "no message"}`,
+		},
+	}
+
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.name, func(t *testing.T) {
+			buf := &bytes.Buffer{}
+			wsa := &writerSyncerAdapter{writer: buf}
+			logger := newZapAdapter(wsa)
+			logger = log.With(logger, tt.withKVs...)
+			err := logger.Log(tt.kvs...)
+			assert.NoError(t, err)
+			assert.JSONEq(t, tt.expected, buf.String())
+		})
+	}
+}
+
 func newZapAdapter(ws zapcore.WriteSyncer) log.Logger {
 	encoderCfg := zapcore.EncoderConfig{
 		MessageKey:     "msg",
