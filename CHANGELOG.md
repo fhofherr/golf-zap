@@ -10,3 +10,6 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+* Basic adapter between [golf](https://github.com/fhofherr/golf) and
+  [zap](https://github.com/uber-go/zap). The adapter implements the
+  `Log` and `With` methods.
