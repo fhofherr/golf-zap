@@ -19,6 +19,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Changed
 
 * Update Go version to `1.13`.
+* Update to `v0.2.0` of golf.
 
 ## [0.1.0] - 2019-04-22
 
