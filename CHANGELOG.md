@@ -8,6 +8,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.2.0] - 2019-10-05
+
 ### Added
 
 * `.projections.json` file. See
@@ -19,6 +21,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Changed
 
 * Update Go version to `1.13`.
+* Update to `v0.2.0` of golf.
 
 ## [0.1.0] - 2019-04-22
 
@@ -28,5 +31,6 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   [zap](https://github.com/uber-go/zap). The adapter implements the
   `Log` and `With` methods.
 
-[Unreleased]: https://github.com/fhofherr/golf-zap/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/fhofherr/golf-zap/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/fhofherr/golf-zap/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/fhofherr/golf-zap/releases/tag/v0.1.0
