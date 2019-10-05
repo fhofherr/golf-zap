@@ -13,6 +13,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * `.projections.json` file. See
   [vim-projectionist](https://github.com/tpope/vim-projectionist) for
   details.
+* `.editorconfig` file. See [editorconfig](https://editorconfig.org/)
+  for details.
 
 ### Changed
 
