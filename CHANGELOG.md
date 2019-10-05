@@ -8,6 +8,12 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+* `.projections.json` file. See
+  [vim-projectionist](https://github.com/tpope/vim-projectionist) for
+  details.
+
 ### Changed
 
 * Update Go version to `1.13`.
