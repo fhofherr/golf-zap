@@ -1,6 +1,6 @@
 module github.com/fhofherr/golf-zap
 
-go 1.12
+go 1.13
 
 require (
 	github.com/fhofherr/golf v0.1.0

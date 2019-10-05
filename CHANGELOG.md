@@ -8,6 +8,10 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+* Update Go version to `1.13`.
+
 ## [0.1.0] - 2019-04-22
 
 ### Added
