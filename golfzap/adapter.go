@@ -10,14 +10,14 @@ const (
 	defaultLogMessage = "no message"
 )
 
-type zapAdapter struct {
-	logger *zap.Logger
+type adapter struct {
+	Logger *zap.Logger
 }
 
 // New creates a new golf adapter wrapping the passed Logger.
 func New(logger *zap.Logger) log.Logger {
-	return zapAdapter{
-		logger: logger,
+	return &adapter{
+		Logger: logger,
 	}
 }
 
@@ -53,8 +53,8 @@ func New(logger *zap.Logger) log.Logger {
 //
 // If neither "msg" nor "message" are present, Log passes the value "no message"
 // as message to the respective zap method.
-func (l zapAdapter) Log(kvs ...interface{}) error {
-	logger := l.logger.WithOptions(zap.AddCallerSkip(1)).Sugar()
+func (a *adapter) Log(kvs ...interface{}) error {
+	logger := a.Logger.WithOptions(zap.AddCallerSkip(1)).Sugar()
 	level, msg, entry := prepareEntry(kvs)
 	switch level {
 	case "debug":
@@ -89,7 +89,7 @@ func prepareEntry(kvs []interface{}) (string, string, []interface{}) {
 			continue
 		}
 		entry = append(entry, kvs[i])
-		i += 1
+		i++
 	}
 	return level, msg, entry
 }
@@ -120,10 +120,10 @@ func toString(x interface{}, d string) string {
 // that passing "level" to with defines the log level for this logger. It is not
 // possible to override a "level" key passed to With by passing a different level
 // to Log.
-func (l zapAdapter) With(kvs ...interface{}) log.Logger {
-	logger := l.logger.Sugar()
+func (a *adapter) With(kvs ...interface{}) log.Logger {
+	logger := a.Logger.Sugar()
 	logger = logger.With(kvs...)
-	return zapAdapter{
-		logger: logger.Desugar(),
+	return &adapter{
+		Logger: logger.Desugar(),
 	}
 }
